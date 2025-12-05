@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h2>Expense Tracker</h2>
+    <h1>Expense Tracker</h1>
   </header>
 </template>
 
