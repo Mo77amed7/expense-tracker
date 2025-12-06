@@ -29,18 +29,19 @@ export default {
   height: 80%;
   background-color: #ddd;
 }
-.income,.expense {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.income,
+.expense {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 h2 {
-    margin: 0;
+  margin: 0;
 }
 .income p {
-    color: green;
+  color: green;
 }
 .expense p {
-    color: rgb(177, 0, 0);
+  color: rgb(177, 0, 0);
 }
 </style>

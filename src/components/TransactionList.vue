@@ -1,6 +1,7 @@
 <template>
   <section>
-    <h3>History</h3>
+    <h2>History</h2>
+    <hr>
     <ul>
       <li class="plus">
         <span>Sneakers</span>
@@ -40,7 +41,7 @@ button {
   height: 18px;
   border: 0;
   color: white;
-  background-color: rgb(177, 0, 0);
+  background-color: #660a0a;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -55,6 +56,6 @@ li.plus {
   border-right-color: green;
 }
 li.minus {
-  border-right-color: rgb(177, 0, 0);
+  border-right-color: rgb(204, 4, 4);
 }
 </style>

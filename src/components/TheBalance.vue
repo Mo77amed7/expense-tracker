@@ -1,6 +1,6 @@
 <template>
   <section>
-    <p>Your Balance</p>
+    <h2>Your Balance</h2>
     <p>$0.00</p>
   </section>
 </template>
@@ -10,4 +10,11 @@ export default {
   name: "TheBalance",
 };
 </script>
-<style scoped></style>
+<style scoped>
+h2 {
+  margin-bottom: 0px;
+}
+p {
+  margin-top: 5px;
+}
+</style>
