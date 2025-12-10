@@ -1,15 +1,12 @@
 <template>
   <the-header></the-header>
-  <the-balance
-    @transaction-added="updateTransactions"
-    :balance="balance"
-  ></the-balance>
+  <the-balance :balance="balance"></the-balance>
   <income-expenses :income="income" :expense="expense"></income-expenses>
   <transaction-list
     :transactions="transactions"
-    @transaction-deleted="deleteTransactions"
+    @delete-transaction="handleDelete"
   ></transaction-list>
-  <add-transaction @transaction-added="updateTransactions"></add-transaction>
+  <add-transaction @add-transaction="handleAdd"></add-transaction>
 </template>
 
 <script>
@@ -20,12 +17,8 @@ import TheHeader from "./components/TheHeader.vue";
 import TheBalance from "./components/TheBalance.vue";
 export default {
   name: "The-App",
-  emits: ["transaction-updated"],
   data() {
     return {
-      balance: 0,
-      income: 0,
-      expense: 0,
       transactions: [],
     };
   },
@@ -36,42 +29,35 @@ export default {
     AddTransaction,
     TransactionList,
   },
+  computed: {
+    income() {
+      return this.transactions
+        .filter((t) => t.amount > 0)
+        .reduce((acc, t) => acc + t.amount, 0);
+    },
+    expense() {
+      return this.transactions
+        .filter((t) => t.amount < 0)
+        .reduce((acc, t) => acc + t.amount, 0);
+    },
+
+    balance() {
+      return this.income + this.expense;
+    },
+  },
   methods: {
-    updateTransactions(newTransaction) {
-      if (newTransaction.amount > 0) {
-        this.income += newTransaction.amount;
-      } else {
-        this.expense += newTransaction.amount;
-      }
-      this.balance = this.income + this.expense;
-      this.transactions.push(newTransaction);
+    handleAdd(transaction) {
+      this.transactions.push(transaction);
       localStorage.setItem("transactions", JSON.stringify(this.transactions));
     },
-    deleteTransactions(updatedTransactions) {
-      this.income = 0;
-      this.expense = 0;
-      updatedTransactions.forEach((transaction) => {
-        if (transaction.amount > 0) {
-          this.income += transaction.amount;
-        } else {
-          this.expense += transaction.amount;
-        }
-      });
-      this.balance = this.income + this.expense;
-      this.transactions = updatedTransactions;
+    handleDelete(id) {
+      this.transactions = this.transactions.filter((t) => t.id !== id);
+      localStorage.setItem("transactions", JSON.stringify(this.transactions));
     },
   },
   created() {
-    const transactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    transactions.forEach((transaction) => {
-      if (transaction.amount > 0) {
-        this.income += transaction.amount;
-      } else {
-        this.expense += transaction.amount;
-      }
-    });
-    this.balance = this.income + this.expense;
-    this.transactions = transactions;
+    const data = JSON.parse(localStorage.getItem("transactions")) || [];
+    this.transactions = data;
   },
 };
 </script>
@@ -92,6 +78,12 @@ body {
   box-shadow: 0px 0px 10px 0px #aaa, 0px 0px 20px 0px #ccc;
   padding: 20px;
   font-family: "Comic Neue", cursive;
+}
+@media (max-width: 767px) {
+  #app {
+    width: 90%;
+    margin: 20px auto;
+  }
 }
 section:not(:last-child) {
   margin-bottom: 40px;

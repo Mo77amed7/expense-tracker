@@ -2,14 +2,14 @@
   <section>
     <h2>Add New Transaction</h2>
     <hr />
-    <form @submit.prevent="addTransaction">
+    <form @submit.prevent="submit">
       <div>
         <label for="text">Text</label>
         <input
           id="text"
           type="text"
           placeholder="Enter text.."
-          v-model="transaction.title"
+          v-model.trim="title"
         />
       </div>
       <div>
@@ -18,11 +18,11 @@
           id="amount"
           type="number"
           placeholder="Enter amount..."
-          v-model.number="transaction.amount"
+          v-model.number="amount"
         />
       </div>
-      <p class="error" v-if="transaction.errorMessage">
-        {{ transaction.errorMessage }}
+      <p class="error" v-if="errorMessage">
+        {{ errorMessage }}
       </p>
       <div class="action">
         <button type="submit">Add Transaction</button>
@@ -35,37 +35,34 @@ export default {
   name: "AddTransaction",
   data() {
     return {
-      transaction: {
         title: "",
-        amount: 0,
-        id: null,
+        amount: null,
         errorMessage: "",
-      },
-    };
-  },
-  methods: {
-    addTransaction() {
-      if (this.transaction.title === "") {
-        this.transaction.errorMessage = "Please enter a valid title";
-        return;
       }
-      if (this.transaction.amount === 0) {
-        this.transaction.errorMessage = "Please enter a valid amount";
-        return;
-      }
-      this.transaction.errorMessage = "";
-
-      const newTransaction = {
-        title: this.transaction.title,
-        amount: Number(this.transaction.amount),
-        id: Date.now(),
-      };
-      // Reset form
-      this.transaction.title = "";
-      this.transaction.amount = 0;
-      this.$emit("transaction-added", newTransaction);
     },
-  },
+  methods: {
+    submit() {
+      if (!this.title) {
+        this.error = "Please enter a valid title";
+        return;
+      }
+      if (!this.amount) {
+        this.error = "Please enter a valid amount";
+        return;
+      }
+
+      this.error = "";
+
+      this.$emit("add-transaction", {
+        id: Date.now(),
+        title: this.title,
+        amount: this.amount,
+      });
+
+      this.title = "";
+      this.amount = null;
+    }
+  }
 };
 </script>
 
