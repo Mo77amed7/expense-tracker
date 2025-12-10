@@ -40,7 +40,6 @@ export default {
         .filter((t) => t.amount < 0)
         .reduce((acc, t) => acc + t.amount, 0);
     },
-
     balance() {
       return this.income + this.expense;
     },

@@ -13,7 +13,9 @@
         />
       </div>
       <div>
-        <label for="amount">Amount<br></br>(negative-expense-positive-income)</label>
+        <label for="amount"
+          >Amount<br />(negative-expense-positive-income)</label
+        >
         <input
           id="amount"
           type="number"
@@ -31,18 +33,19 @@
   </section>
 </template>
 <script>
-import {useToast} from"vue-toastification";
+import { useToast } from "vue-toastification";
 export default {
   name: "AddTransaction",
   data() {
     return {
-        title : "",
-        amount: null,
-        error: "",
-      }
-    },
+      title: "",
+      amount: null,
+      error: "",
+    };
+  },
   methods: {
     submit() {
+      const toast = useToast();
       if (!this.title) {
         this.error = "Please enter a valid title";
         return;
@@ -51,21 +54,17 @@ export default {
         this.error = "Please enter a valid amount";
         return;
       }
-
       this.error = "";
-      const toast = useToast();
       toast.success("Transaction added successfully!");
-
       this.$emit("add-transaction", {
         id: Date.now(),
         title: this.title,
         amount: this.amount,
       });
-
       this.title = "";
       this.amount = null;
-    }
-  }
+    },
+  },
 };
 </script>
 
