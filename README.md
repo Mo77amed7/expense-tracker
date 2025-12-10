@@ -48,5 +48,4 @@ The project will be available at:
 https://username.github.io/expense-tracker/
 ```
 ## 📸 Project Screenshots
-https://vscode.dev/github/Mo77amed7/expense-tracker/blob/mainng
-```
+<img width="972" height="810" alt="Image" src="https://github.com/user-attachments/assets/21f26f0a-3c71-4267-8db0-76b946bfc7fd" />
