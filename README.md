@@ -25,7 +25,7 @@
 ## 🚀 Running the Project Locally
 
 Clone the repository:
-git clone https://github.com/username/expense-tracker.git
+git clone https://github.com/[your-username]/expense-tracker.git
 ```
 Navigate to the project folder:
 cd expense-tracker
@@ -45,7 +45,7 @@ Deploy using gh-pages:
 npm run deploy
 ```
 The project will be available at:
-https://username.github.io/expense-tracker/
+https://[your-username].github.io/expense-tracker/
 ```
 ## 📸 Project Screenshots
 <img width="972" height="810" alt="Image" src="https://github.com/user-attachments/assets/21f26f0a-3c71-4267-8db0-76b946bfc7fd" />
