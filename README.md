@@ -1,38 +1,58 @@
-# expense-tracker
+# Expense Tracker
 
-This template should help get you started developing with Vue 3 in Vite.
+**Expense Tracker** is an interactive web application built with **Vue.js 3** and **Vite** that helps users manage their daily expenses efficiently and easily.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 📌 Features
 
-## Recommended Browser Setup
+- Add income and expenses quickly.
+- View current account balance.
+- Display a list of all transactions.
+- Delete any transaction.
+- Responsive and user-friendly design.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+---
 
-## Customize configuration
+## 💻 Technologies Used
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **Frontend:** Vue.js 3, HTML, CSS, JavaScript
+- **Build Tool:** Vite
+- **Deployment:** GitHub Pages
 
-## Project Setup
+---
 
-```sh
+## 🚀 Running the Project Locally
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/username/expense-tracker.git
+Navigate to the project folder:
+
+bash
+cd expense-tracker
+Install dependencies:
+
+bash
 npm install
-```
+Start the local development server:
 
-### Compile and Hot-Reload for Development
-
-```sh
+bash
 npm run dev
-```
+Open your browser at: http://localhost:5173/
 
-### Compile and Minify for Production
+Build the project:
 
-```sh
+bash
 npm run build
+Deploy using gh-pages:
+
+bash
+npm run deploy
+The project will be available at:
+https://username.github.io/expense-tracker/
+
+📸 Project Screenshots
+https://vscode.dev/github/Mo77amed7/expense-tracker/blob/mainng
 ```
