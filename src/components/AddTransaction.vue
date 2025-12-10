@@ -21,8 +21,8 @@
           v-model.number="amount"
         />
       </div>
-      <p class="error" v-if="errorMessage">
-        {{ errorMessage }}
+      <p class="error" v-if="error">
+        {{ error }}
       </p>
       <div class="action">
         <button type="submit">Add Transaction</button>
@@ -31,13 +31,14 @@
   </section>
 </template>
 <script>
+import {useToast} from"vue-toastification";
 export default {
   name: "AddTransaction",
   data() {
     return {
-        title: "",
+        title : "",
         amount: null,
-        errorMessage: "",
+        error: "",
       }
     },
   methods: {
@@ -52,6 +53,8 @@ export default {
       }
 
       this.error = "";
+      const toast = useToast();
+      toast.success("Transaction added successfully!");
 
       this.$emit("add-transaction", {
         id: Date.now(),
