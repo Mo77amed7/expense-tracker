@@ -1,19 +1,34 @@
 <template>
   <section>
     <h2>History</h2>
-    <hr>
-    <ul>
-      <li class="plus">
-        <span>Sneakers</span>
-        <span>200$</span>
-        <button>X</button>
+    <hr />
+    <ul v-if="transactions.length > 0">
+      <li
+        v-for="transaction in transactions"
+        :key="transaction.title"
+        :class="transaction.amount > 0 ? 'plus' : 'minus'"
+      >
+        <span>{{ transaction.title }}</span>
+        <span>{{ transaction.amount }}$</span>
+        <button @click="deleteTransaction(transaction.id)">X</button>
       </li>
     </ul>
+    <p v-else>No transactions available</p>
   </section>
 </template>
 <script>
 export default {
   name: "TransactionList",
+  props: ["transactions"],
+  methods: {
+    deleteTransaction(id) {
+      const transactions =
+        JSON.parse(localStorage.getItem("transactions")) || [];
+      const updated = transactions.filter((t) => t.id !== id);
+      localStorage.setItem("transactions", JSON.stringify(updated));
+      this.$emit("transaction-deleted", updated);
+    },
+  },
 };
 </script>
 
@@ -32,6 +47,8 @@ li {
   padding: 5px;
   border-right-width: 2px;
   border-right-style: solid;
+  box-shadow: 0px 0px 1px 1px #ccc;
+  margin: 10px 0px;
 }
 
 button {

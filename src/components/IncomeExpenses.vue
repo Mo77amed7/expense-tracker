@@ -2,18 +2,19 @@
   <section class="income-exp">
     <div class="income">
       <h2>Income</h2>
-      <p>+$0.00</p>
+      <p>+{{ income }}$</p>
     </div>
     <span class="divider"></span>
     <div class="expense">
       <h2>Expense</h2>
-      <p>-$0.00</p>
+      <p>{{ expense }}$</p>
     </div>
   </section>
 </template>
 <script>
 export default {
   name: "IncomeExpenses",
+  props: ["income", "expense"],
 };
 </script>
 <style scoped>

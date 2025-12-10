@@ -1,13 +1,14 @@
 <template>
   <section>
     <h2>Your Balance</h2>
-    <p>$0.00</p>
+    <p>{{ balance }}$</p>
   </section>
 </template>
 
 <script>
 export default {
   name: "TheBalance",
+  props: ["balance"],
 };
 </script>
 <style scoped>
