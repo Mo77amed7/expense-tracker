@@ -46,15 +46,24 @@ export default {
   methods: {
     submit() {
       const toast = useToast();
-      if (!this.title) {
-        this.error = "Please enter a valid title";
-        return;
-      }
-      if (!this.amount) {
-        this.error = "Please enter a valid amount";
-        return;
-      }
+
       this.error = "";
+      if (!this.title) {
+        this.error = "Title cannot be empty";
+        return;
+      }
+      if (this.title.length < 3) {
+        this.error = "Title must be at least 3 characters long";
+        return;
+      }
+      if (this.amount === 0) {
+        this.error = "Amount cannot be zero";
+        return;
+      }
+      if (this.amount === null || isNaN(this.amount)) {
+        this.error = "Amount must be a valid number";
+        return;
+      }
       toast.success("Transaction added successfully!");
       this.$emit("add-transaction", {
         id: Date.now(),
